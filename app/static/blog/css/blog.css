@@ -1,0 +1,116 @@
+.blogList {
+    width: 100%;
+    background-color: rgba(181, 181, 181, 0.98);
+    margin-top: 40px;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05); 
+}
+.blogList h2{
+    font-size: 25px;
+}
+.blogList #editModal .modal-dialog .modal-content, #deleteModal .modal-dialog .modal-content {
+    margin-top: 100px;
+}
+
+.editBlog {
+    color: #dedede;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.updateBtn a {
+    display: inline-block;
+    margin: 10px;
+    font-size: 18px;
+}
+
+.addBlog {
+    position:absolute;
+    min-height: 16px;
+    width: 86%;
+    margin-left: 70px;
+    margin-top: 8px;
+    position:relative;
+    margin-bottom: 10px;
+    background-color: rgba(181, 181, 181, 0.98);
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+    /* box-shadow: inset 0 1px 1px rgba(0,0,0,.05); */
+}
+
+.addblogForm {
+    margin-left: 20px;
+    background-color: rgba(181, 181, 181, 0.98);
+}
+
+.bg-1 {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+.bg-2 {
+    background-color: #474e5d;
+    color: #ffffff;
+}
+
+.bg-3 {
+    background-color: #ffffff;
+    color: #555555;
+}
+
+.bg-4 {
+    background-color: #2f2f2f;
+    color: #fff;
+}
+
+.createblogContainer {
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.media-blog .list-group-item-date {
+    font-size: 14px;
+    font-style: oblique;
+}
+
+.media-blog {
+    padding: 15px;
+    color: #009688;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.media-blog p{
+    color: #333;
+}
+.media-blog .media-object{
+ max-width: 251px;   
+ padding-right: 20px;
+}
+.media-blog .updateBtn {
+    display: inline-block;
+    text-align: right;
+    float: right;
+    margin-left: 10px;
+}
+.media-blog .media-left-text {
+    display: inline-block;
+}
+.media-heading {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.list-group-item-text a {
+    color: #009688;
+}

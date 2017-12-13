@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<script src="static/common/js/jquery-3.1.1.js"></script>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script><script>
+tinymce.init({
+  selector: "textarea",
+  themes: "modern"
+});
+$('input.submit').click(function(){
+  alert('hi');
+  // if ($("#txtDescription".valid())
+  //   alert('succes');
+  // else
+  //   alert($('#message').text().length);
+});
+</script>
+<div class="container createblogContainer">
+ <h3 class="text-center">Create Your Blog</h3>
+  <section>
+    <div class="well addBlog">
+      <form class="form-horizontal addblogForm text-center" method="post" action="/addBlog">
+        <fieldset>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="txtTitle">Title: </label>
+            <div class="col-md-6">
+              <input id="txtTitle" name="inputTitle" placeholder="placeholder" class="form-control input-md" required type="text" data-error-msg="Please enter your name">
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-md-4 control-label" for="txtTitle">Description: </label>
+            <div class="col-md-7">
+              <textarea id="txtDescription" name="inputDescription" rows="15" cols="100" type="text" placeholder="placeholder" class="form-control input-md" class="tinymce"></textarea>
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <label for="txtPost" class="col-md-4 control-label" for="txtTitle">Photos: </label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                    Browse… <input type="file" id="fileupload" name="file" multiple>
+                </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+            </div> -->
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-6">
+              <input id="publishbtn" name="publishbtn" class="btn btn-primary" type="submit" value="Publish" />
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>   
+  </section>
+</div>
+
+{% endblock %}

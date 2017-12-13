@@ -1,0 +1,14 @@
+[  
+   {  
+      "id":1,
+      "name":"Shruti",
+      "username":"shrutih",
+      "email":"shruti123@example.com",
+      "password":"S12345",
+      "address":"FC road, Pune",
+      "contact":"8543466644",
+      "gender":"Female",
+      "blog":"app.blog.models.Blog"
+
+   }
+]

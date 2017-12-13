@@ -1,0 +1,102 @@
+ {% extends 'layout.html' %} {% block body %}
+<script type="text/javascript">
+    function comment_toggler(comment_id) {
+        $("." + comment_id).toggle();
+    }
+</script>
+<div class="loginContainer">
+    <div id="blog-portfolio">
+        <div class="jumbotron">
+            <a href="/" class="btn btn-primary" role="button"><strong><< Back</strong></a>
+            <div class="blog-portfolio-item blog-img-right">
+                <div class="blog-portfolio-figure animate-box">
+                    <img src="{{ url_for('static',filename='blog/images/woods.jpeg')}}" width="500" height="400" style="margin-top: 54px;">
+                    <p style="margin-top: 30px;"><strong>Created_by: </strong> {{blogs.author.name}}</p>
+                    <p style="margin-top: 2px;"><strong>Blog_updated_by: </strong> {{blogs.blog_updated_on}}</p>
+                </div>
+                <div class=" blog-portfolio-description">
+                    <h2>{{blogs.title}}</h2>
+                    <p>{{blogs.description|striptags}}</p>
+                </div>
+            </div>
+            <h2 class="headtext">Comments</h2>
+            <form action="#error-check" method="post" name=commentform class="user_reply-form" id="error-check">
+                    {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{ form.content(rows="4",class="form-control") }}
+                    {% for error in form.content.errors %}
+                        <span style="color:red ">{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+                    {% if current_user.is_authenticated %}
+                        {{ form.submit(class="btn btn-change") }}
+                    {% else %}
+                        <a href="/login" class="btn btn-primary" role="button">Comment</a>
+                    {% endif %}
+            </form>
+            {% for comment in blog_comments %}
+                {% if not comment.user_replies %}
+                <blockquote class="comment-blockquote">
+                    <div class="pull-left Userimage">
+                        <img src="{{ url_for('static',filename='auth/images/profile_pic.png')}}" class="img-responsive img-circle avatar" alt="user profile image">
+                    </div>
+                    <h4>{{ comment.content }}</h4>
+                    <span class="blog-author">  - by {{ comment.commenter.name }}</span>
+                    <button class="btn btn-change" onclick="comment_toggler('{{ comment.id }}');">reply</button>
+                    <div class = "{{ comment.id }} replyCmnt" style="display:none;">
+                        <form action="" method="post" name=commentform class="user_reply-form">
+                        {% if form.csrf_token %}
+                            {{form.csrf_token()}}
+                        {% endif %}
+                        <div class="form-group">
+                        {{ form.content(rows="1",class="form-control") }}
+                        {{ form.parent_comment_id(value = comment.id) }}
+                        {% for error in form.content.errors %}
+                            <span style="color:red ">{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                        {% if current_user.is_authenticated %}
+                            {{ form.submit(class="btn btn-change") }}
+                        {% else %}
+                            <a href="/login" class="btn btn-primary" role="button">Comment</a>
+                        {% endif %}
+                        </form> 
+                    </div>
+                </blockquote>
+                {% endif %}
+                {% for user_reply in comment.userreplies recursive %}
+                    <blockquote class="comment-blockquote">
+                        <div class="pull-left Userimage">
+                            <img src="{{ url_for('static',filename='auth/images/profile_pic.png')}}" class="img-responsive img-circle avatar" alt="user profile image">
+                        </div>
+                        <h4>{{ user_reply.content }}</h4>
+                        <span class="blog-author">  - by {{ user_reply.commenter.name}}</span>
+                        {{ loop(user_reply.userreplies) }}
+                        <button class="btn btn-change" onclick="comment_toggler('{{ user_reply.id }}');">reply</button>
+                        <br>
+                        <div class = "{{ user_reply.id }} replyCmnt" style="display:none;">
+                            <form action="" method="post" name=commentform class="user_reply-form">
+                            {% if form.csrf_token %}
+                                {{form.csrf_token()}}
+                            {% endif %}
+                            <div class="form-group">
+                            {{ form.content(rows="1",class="form-control") }}
+                            {{ form.parent_comment_id(value = comment.id) }}
+                            {% for error in form.content.errors %}
+                                <span style="color:red ">{{ error }}</span>
+                            {% endfor %}
+                            </div>
+                            {% if current_user.is_authenticated %}
+                                {{ form.submit(class="btn btn-change") }}
+                            {% else %}
+                                <a href="/login" class="btn btn-primary" role="button">Comment</a>
+                            {% endif %}
+                            </form> 
+                        </div>
+                    </blockquote>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

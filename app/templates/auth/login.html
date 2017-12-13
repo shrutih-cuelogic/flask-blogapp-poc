@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block body %}  
+<div class="loginContainer">
+  <div class="col-sm-4 col-sm-offset-4">
+    <h3 class="text-center"> Login or <span>Sign up</span></h3>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <div class="Loginform">
+      <form action="" method="POST" form-signin>
+        {{form.hidden_tag()}}
+        <div class="text-center social-btn">
+<!--           <a href="#" class="btn btn-primary btn-lg btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+          <a href="#" class="btn btn-info btn-lg btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a> -->
+          <a href="{{ auth_url }}" class="btn btn-danger btn-lg btn-block"><i class="fa fa-google-plus"></i>  Sign in with <b>Google</b></a>
+        </div>
+        <div class="or-seperator"><b>or</b></div>
+        <div class="row">
+          <div class="form-group col-sm-12">
+              {{render_field(form.email, class_="form-control")}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-12">
+              {{render_field(form.password, class_="form-control")}}
+          </div>
+        </div>
+        <div class="checkbox">
+          <label>{{ form.remember_me }} Remember me</label>
+        </div>
+        <div class="submitBtn">
+          {{ form.submit(class_='btn btn-primary form-control')}}
+        </div>
+      </form>
+      <div class="text-center signUp">Don't have an account?<a href="/register">  <strong>Sign up here</strong> </a></div>
+    </div>
+</div>  
+{% endblock %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MyFlaskApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="static/common/js/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="{{ url_for('static',filename='auth/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='blog/css/blog.css')}}") rel="stylesheet">
+    <link href="{{ url_for('static',filename='auth/css/auth.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,500' rel='stylesheet' type='text/css'>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="static/auth/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="static/auth/css/icomoon.css">
+    <!-- Simple Line Icons -->
+    <link rel="stylesheet" href="static/auth/css/simple-line-icons.css">
+  </head>
+  <body>
+    {% include 'includes/_navbar.html' %} 
+    <div class="mainLayout">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="errorMsg">
+            <div class="alert alert-success alert-dismissable fade in">
+              <ul class=flashes>
+                {% for category, message in messages %}
+                  <a href="#" class="close" data-dismiss="alert">&times;</a>
+                  <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      {% block body %}{% endblock %}
+    </div>
+    <footer class="text-center">
+      <p class="linkEmail">Posted by: Shruti Hiremath</p>
+      <p class="linkEmail">Contact information: <a href="mailto:shruti.hiremath@cuelogic.com">shruti.hiremath@cuelogic.com</a></p>
+      <p class="linkEmail">© 2017. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

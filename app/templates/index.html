@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="banner">
+  <img src="static/auth/images/main_wallpaper.jpg" align="center" class="img-responsive">
+  <div class="container">
+    <div class="centered">Shruti’s Tech Blog
+      <hr>
+      <p>Learning Python Web Application Development with Flask</p>
+      <p>Filled with little technical blogs, economical and social blogs. Also check out my blog on <a href="https://github.com/shrutih-cuelogic/Flask-Training">Github</a></p>
+      <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+    </div>
+  </div>
+</div> 
+
+<div class="container mainContainer">
+  <div class="blog-intro text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1 class="intro-lead">Make something you love</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="blog-portfolio">
+    <div class="jumbotron">
+    {% for blogs in blogs_list %}
+      <div class="blog-portfolio-item blog-img-right">
+        <div class="blog-portfolio-figure animate-box" style="background-image: url(static/blog/images/woods.jpeg);"></div>
+        <div class="blog-portfolio-description">
+          <h2>{{blogs.title}}</h2>
+          <p>{{blogs.description[:200]|striptags}}{% if blogs.description|length >= 200 %}...{% endif %}</p>
+          {% if blogs.description|length <= 200 %}
+            <p class="readMore"><a href="{{ url_for('auth.blog_track',blog_id=blogs.id)}}" class="btn btn-primary">View Details</a></p>
+          {% endif %}
+          {% if blogs.description|length >= 200 %}
+            <p class="readMore"><a href="{{ url_for('auth.blog_track',blog_id=blogs.id)}}" class="btn btn-primary">Read More</a></p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+  <div id="blog-services">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row">
+            <h2 class="section-lead text-center">Features</h2>
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 blog-service">
+              <div class="blog-icon to-animate"><span class="glyphicon glyphicon-gift"></span> </div>
+              <div class="blog-desc">
+                <h3>100% Free</h3>
+                <p>This blog sites are free to use though you won’t have full control over your sites. </p>
+              </div>  
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 blog-service">
+              <div class="blog-icon to-animate"><span class="glyphicon glyphicon-eye-open"></i></div>
+              <div class="blog-desc">
+                <h3>Retina Ready</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+              </div>
+            </div>
+            <div class="clearfix visible-sm-block visible-xs-block"></div>
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 blog-service">
+              <div class="blog-icon to-animate"><span class="glyphicon glyphicon-resize-full"></div>
+              <div class="blog-desc">
+                <h3>Fully Responsive</h3>
+                <p>This is a responsive Blogspot theme for the blogger type. It’s simple, fluid and will work well for sites and blogs that talk about technology content.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 blog-service">
+              <div class="blog-icon to-animate"><span class="glyphicon glyphicon-refresh"></div>
+              <div class="blog-desc">
+                <h3>Lightweight</h3>
+                <p>This blog system that gives you full freedom over your words.You can create and utilize theme hooks without the need for any programming knowledge</p>
+              </div>  
+            </div>
+            <div class="clearfix visible-sm-block visible-xs-block"></div>
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 blog-service">
+              <div class="blog-icon to-animate"><span class="glyphicon glyphicon-heart-empty"></div>
+              <div class="blog-desc">
+                <h3>Made with Love</h3>
+                <p>Here you will find sweet inspiration pieces to keep you up on ideas and supplies to combine for a gorgeous layout of your own.</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 blog-service">
+              <div class="blog-icon to-animate"><span class="glyphicon glyphicon-globe"></div>
+              <div class="blog-desc">
+                <h3>Eco Friendly</h3>
+                <p> This blog is about get the information about changing businesses trends which can implement to become more eco-friendly.</p>
+              </div>
+            </div>
+            <div class="clearfix visible-sm-block visible-xs-block"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
