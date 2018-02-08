@@ -86,7 +86,6 @@ def blog_track(blog_id):
 def register():
     registerform = RegisterForm()
     if registerform.validate_on_submit():
-        import pdb; pdb.set_trace();
         user_obj = User(name = registerform.name.data, 
             email = registerform.email.data, 
             username = registerform.username.data, 
