@@ -28,7 +28,9 @@ class Auth:
 
 class Config(object):
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@flaskapp-postgres:5432/postgres'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@localhost/postgres'
+    # Use this for docker running
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@flaskapp-postgres:5432/postgres'
     SECRET_KEY = 'b240ac48e41e84a4278d195092289a8bdb08556b22f6760d'
     SQLALCHEMY_TRACK_MODIFICATIONS =True
     # FIXTURE_DIRS = (
@@ -39,6 +41,8 @@ class Config(object):
 class TestConfig(Config):
     """docstring for TestConfig"""
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@flaskapp-postgres:5432/postgres'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@localhost/postgres'
+    # Use this for docker running
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@flaskapp-postgres:5432/postgres'
     SECRET_KEY = 'b240ac48e41e84a4278d195092289a8bdb08556b22f6760d'
     SQLALCHEMY_TRACK_MODIFICATIONS =False
