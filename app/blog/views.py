@@ -7,7 +7,7 @@ import re
 from datetime import datetime
 from . import blog_mod
 from .. import db
-from models import Blog
+from .models import Blog
 
 
 @blog_mod.route('/blogHome')
