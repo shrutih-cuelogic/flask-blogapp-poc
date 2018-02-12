@@ -28,7 +28,7 @@ class Auth:
 
 class Config(object):
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@localhost:5432/postgres'
+    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
     # Use this for docker running
     # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:admin123@flaskapp-postgres:5432/postgres'
     SECRET_KEY = 'b240ac48e41e84a4278d195092289a8bdb08556b22f6760d'
