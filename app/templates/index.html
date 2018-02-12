@@ -25,21 +25,25 @@
   </div>
   <div id="blog-portfolio">
     <div class="jumbotron">
-    {% for blogs in blogs_list %}
-      <div class="blog-portfolio-item blog-img-right">
-        <div class="blog-portfolio-figure animate-box" style="background-image: url(static/blog/images/woods.jpeg);"></div>
-        <div class="blog-portfolio-description">
-          <h2>{{blogs.title}}</h2>
-          <p>{{blogs.description[:200]|striptags}}{% if blogs.description|length >= 200 %}...{% endif %}</p>
-          {% if blogs.description|length <= 200 %}
-            <p class="readMore"><a href="{{ url_for('auth.blog_track',blog_id=blogs.id)}}" class="btn btn-primary">View Details</a></p>
-          {% endif %}
-          {% if blogs.description|length >= 200 %}
-            <p class="readMore"><a href="{{ url_for('auth.blog_track',blog_id=blogs.id)}}" class="btn btn-primary">Read More</a></p>
-          {% endif %}
+    {% if blogs_list %}
+      {% for blogs in blogs_list %}
+        <div class="blog-portfolio-item blog-img-right">
+          <div class="blog-portfolio-figure animate-box" style="background-image: url(static/blog/images/woods.jpeg);"></div>
+          <div class="blog-portfolio-description">
+            <h2>{{blogs.title}}</h2>
+            <p>{{blogs.description[:200]|striptags}}{% if blogs.description|length >= 200 %}...{% endif %}</p>
+            {% if blogs.description|length <= 200 %}
+              <p class="readMore"><a href="{{ url_for('auth.blog_track',blog_id=blogs.id)}}" class="btn btn-primary">View Details</a></p>
+            {% endif %}
+            {% if blogs.description|length >= 200 %}
+              <p class="readMore"><a href="{{ url_for('auth.blog_track',blog_id=blogs.id)}}" class="btn btn-primary">Read More</a></p>
+            {% endif %}
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    {% else %}
+      <div class="blog-portfolio-description"><h2>Sorry there are no blog posts...!!!</h2></div>
+    {% endif %}
     </div>
   </div>
 
