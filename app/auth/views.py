@@ -2,12 +2,12 @@ from flask import Flask, render_template, flash, redirect, url_for, session, req
 from flask_login import login_user , logout_user , current_user , login_required
 from app.auth.forms import RegisterForm, ProfileEditForm, LoginForm
 from app.blog.forms import UserCommentForm
-from urllib2 import HTTPError
+from urllib3.exceptions import HTTPError
 import json
 from datetime import datetime
 from . import auth
 from .. import db
-from models import User
+from .models import User
 from app.blog.models import Blog, UserComment
 from requests_oauthlib import OAuth2Session
 from config import Auth
@@ -86,7 +86,6 @@ def blog_track(blog_id):
 def register():
     registerform = RegisterForm()
     if registerform.validate_on_submit():
-        import pdb; pdb.set_trace();
         user_obj = User(name = registerform.name.data, 
             email = registerform.email.data, 
             username = registerform.username.data, 

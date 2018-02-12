@@ -6,7 +6,6 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_login import LoginManager
 from werkzeug.utils import secure_filename
-from production import ProdConfig
 # UPLOAD_FOLDER = '/static/blog/images/uploads'
 # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -14,21 +13,16 @@ from production import ProdConfig
 
 
 # Define the WSGI application object
-is_prod = os.environ.get('IS_HEROKU', None)
 
 app = Flask(__name__)
 admin = Admin(app, name='sample', template_mode='bootstrap3')
 
 # Configurations
-
-if not is_prod:
-	app.config.from_object('config.DevConfig')
-else:
-	app.config.from_object(ProdConfig)
+app.config.from_object('config.Config')
 
 # Define the database object which is imported
 # by modules and controllers
-	
+
 db = SQLAlchemy(app)
 lm = LoginManager(app)
 lm.session_protection ='Strong'
